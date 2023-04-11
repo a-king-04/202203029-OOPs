@@ -1,0 +1,63 @@
+class Node {
+    int value;
+    Node next;
+
+    public Node(int value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    public LinkedList() {
+        this.head = null;
+    }
+
+    public void add(int value) {
+        Node newNode = new Node(value);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node currentNode = head;
+            while (currentNode.next != null) {
+                currentNode = currentNode.next;
+            }
+            currentNode.next = newNode;
+        }
+    }
+
+    public int indexOf(int value) {
+        Node currentNode = head;
+        int index = 0;
+        while (currentNode != null) {
+            if (currentNode.value == value) {
+                return index;
+            }
+            currentNode = currentNode.next;
+            index++;
+        }
+        return -1;
+    }
+}
+
+public class List {
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.add(1);
+        list.add(5);
+        list.add(7);
+        list.add(3);
+        list.add(8);
+        list.add(2);
+        list.add(3);
+
+        int index = list.indexOf(7);
+        if (index == -1) {
+            System.out.println("Element not found in the list");
+        } else {
+            System.out.println("Index of element 7 is: " + index);
+        }
+    }
+}
